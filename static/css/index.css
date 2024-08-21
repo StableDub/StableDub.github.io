@@ -17,6 +17,33 @@ body {
   font-variant: small-caps;
 }
 
+.is-bold{
+  font-weight: bold;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.truncate {
+  overflow-wrap: break-word; /* 在单词边界处换行 */
+}
+
+.color-pink {
+  color: rgb(200, 170, 168); /* 红色 */
+}
+
+.color-green {
+  color: rgb(126, 152, 118); /* 绿色 */
+}
+
+.color-blue {
+  color: rgb(114, 136, 173); /* 蓝色 */
+}
+
+.color-red {
+  color: rgb(181, 82, 82); /* 蓝色 */
+}
 
 .teaser .hero-body {
   padding-top: 0;
@@ -110,7 +137,7 @@ body {
 .publication-body img {
 }
 
-.results-carousel {
+/* .results-carousel {
   overflow: hidden;
 }
 
@@ -125,8 +152,28 @@ body {
 
 .results-carousel video {
   margin: 0;
+} */
+
+.results-carousel {
+  display: flex;
+  overflow: hidden;
 }
 
+.results-carousel .item {
+  flex: 0 0 100%; /* 每个 item 占屏幕的 100% */
+  margin: 5px;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  padding: 0;
+  font-size: 0;
+}
+
+.results-carousel video {
+  width: 100%; /* 确保视频填满整个 item */
+  height: auto;
+  margin: 0;
+}
 
 .interpolation-panel {
   background: #f5f5f5;
