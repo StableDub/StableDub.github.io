@@ -263,4 +263,10 @@
   text-decoration: none; /* 移除下划线 */
 }
 
-/* font-family: 'Roboto', sans-serif; 设置字体 */
+.myprompt.comment_text4 {
+  margin-top: 0px; /* 调整上方间距 */
+  margin-bottom: 10px; /* 调整下方间距 */
+  margin-left: 25px; /* 调整左边间距 */
+  font-size: 15px;  /* 调整字体大小 */
+  text-align: left; /* 调整文本位置 */
+}
