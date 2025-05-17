@@ -63,7 +63,7 @@
                     : Taming Diffusion Prior for Efficient and Generalized Visual Dubbing
             </h1>
         </div>
-        <div class="nerf_subheader_v2">Anonymous Authors</div>
+        <!-- <div class="nerf_subheader_v2">Anonymous Authors</div> -->
         <div class="nerf_subheader_v2">
             <div class="external-link">
                 <a class="btn" href="https://stabledub.github.io" role="button" target="_blank">
@@ -78,18 +78,20 @@
         <div class="w-container grey_container">
             <h2 class="grey-heading_nerf_abstract">Abstract</h2>
             <p class="paragraph-3 nerf_text nerf_results_text">
-              The visual dubbing task aims to generate mouth movements synchronized with the driving audio, 
-              which has seen significant progress in recent years. However, previous methods struggle to 
-              achieve generalized results with consistent visual quality, occlusion robustness, and lip habit 
-              resemblance. This limits their applicability to diverse scenarios. Enlarging the diffusion-based 
-              model is a straightforward approach to enhance generalization but leads to greater complexity. 
-              In this paper, we propose StableDub to utilize the diffusion prior for efficient and generalized 
-              visual dubbing. We employ direct image concatenation for appearance injection, achieving substantial 
-              memory optimization, and propose the hybrid Mamba-Attention denoising network with streamlined 
-              training. To resemble the lip habit of the target avatar, we propose a lip habit modulation module 
-              that incorporates the habits into the generation process. Two compact facial masks are also derived 
-              to enhance generalization and optimization efficiency. Extensive experimental results demonstrate 
-              that StableDub outperforms the state-of-the-art methods in various aspects. 
+              The visual dubbing task aims to generate mouth movements synchronized with the driving audio, which has seen significant progress 
+              in recent years. However, two critical deficiencies hinder their wide application: (1) Audio-only driving paradigms inadequately 
+              capture speaker-specific lip habits, which fail to generate lip movements similar to the target avatar; (2) Conventional blind-inpainting 
+              approaches frequently produce visual artifacts when handling obstructions (e.g., microphones, hands), limiting practical deployment.
+              In this paper, we propose StableDub, a novel and concise framework integrating lip-habit-aware modeling with occlusion-robust synthesis. 
+              Specifically, building upon the Stable-Diffusion backbone, we develop a lip-habit-modulated mechanism that jointly models phonemic audio-visual 
+              synchronization and speaker-specific orofacial dynamics. To achieve plausible lip geometries and object appearances under occlusion, we 
+              introduce the occlusion-aware training strategy by explicitly exposing the occlusion objects to the inpainting process.
+              By incorporating the proposed designs, the model eliminates the necessity for cost-intensive priors in previous methods, thereby exhibiting 
+              superior training efficiency on the computationally intensive diffusion-based backbone. To further optimize training efficiency from the 
+              perspective of model architecture, we introduce a hybrid Mamba-Transformer architecture, which demonstrates the enhanced applicability in 
+              low-resource research scenarios. Extensive experimental results demonstrate that StableDub achieves superior performance in lip habit 
+              resemblance and occlusion robustness. Our method also surpasses other methods in audio-lip sync, video quality, and resolution consistency. 
+              We expand the applicability of visual dubbing methods from comprehensive aspects.
                 <br>
                 <br>
                 Demo videos may take up to <b style="color: rgb(124, 196, 245);">1 minute</b> to load. Please wait...
@@ -363,12 +365,12 @@
         <div class="grid-container-1">
             <img src="static/img/pipeline.png">
             <p style="font-size: 15px;font-family: Ubuntu; text-align: justify;">
-              Given the input video of the target avatar and arbitrary audio, StableDub alters the masked mouth region and generates lip 
-              movements that match the audio content. To supplement appearance details in the generation process, we concatenate an appearance image
-              with per-frame video latent and send them into the denoising U-Net. To enhance the resemblance of generated lip movements with the
-              target avatar, we extract the habit feature from another lip segment and modulate it with the audio feature. The modulated feature is sent to
-              the audio cross-attention layer in each U-Net block. The spatial and temporal Mamba layers are incorporated to efficiently ensure image
-              quality and video coherence. 1 or 2 denotes that the layer is optimized in the training of stage 1 or stage 2.
+              Given the input video of the target avatar and arbitrary driving audio, StableDub alters the masked mouth region and generates lip movements 
+              that match the audio content. To supplement appearance details in the generation process, we concatenate an appearance image with per-frame 
+              video latent and send them into the denoising U-Net. To enhance the resemblance of generated lip movements with the target avatar, we extract 
+              the habit feature from another lip segment and modulate it with the audio feature. The modulated feature is sent to the audio cross-attention 
+              layer in each U-Net block. The spatial and temporal Mamba layers are incorporated to efficiently ensure image quality and video coherence. 
+              1 or 2 denotes that the layer is optimized in the training of stage 1 or stage 2.
             </p>
         </div>
     </div>
